@@ -4,12 +4,13 @@
     "require": {
         "php": ">=5.4",
         "orno/di": "dev-master",
-        "pimple/pimple": "dev-trigger",
+        "pimple/pimple": "*",
         "illuminate/container": "4.0.*",
         "zendframework/zend-di": "dev-master",
         "symfony/dependency-injection": "2.2.*@dev",
         "aura/di": "dev-master",
         "mnapoli/php-di": "3.0.*",
+        "cansascityshuffle/puice": "0.1.0",
         "league/di": "dev-master"
     },
     "minimum-stability": "dev",

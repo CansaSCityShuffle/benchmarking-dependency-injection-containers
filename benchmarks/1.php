@@ -39,7 +39,7 @@ for ($i = 0; $i < 1000; $i++) {
     unset($foo);
 
 }
-
+/*
 for ($i = 0; $i < 1000; $i++) {
 
     // Orno\Di
@@ -52,6 +52,24 @@ for ($i = 0; $i < 1000; $i++) {
     unset($orno);
     unset($foo);
 
+}*/
+
+for ($i = 0; $i < 1000; $i++) {
+    $bm->start('benchmark1', 'puice');
+//    Puice::configureApplication(function($config) {
+//        $factory = new Puice\Factory($config);
+//
+//        $config->set('BartInterface', 'defaultBart', $factory->create('Bart'));
+//        $config->set('Bam', 'defaultBam', $factory->create('Bam'));
+//        $config->set('BazInterface', 'defaultBaz', $factory->create('Baz'));
+//        $config->set('Bar', 'defaultBar', $factory->create('Bar'));
+//    });
+//
+//    $factory = Puice\Factory(new Puice());
+    $bm->end('benchmark1', 'puice');
+//    unset($factory);
+//    Puice::reset();
+//    unset($foo);
 }
 
 for ($i = 0; $i < 1000; $i++) {
@@ -126,10 +144,10 @@ for ($i = 0; $i < 1000; $i++) {
         var data = google.visualization.arrayToDataTable([
             ['Component', 'Time Taken'],
             ['Illuminate\\Container', <?= $bm->getBenchmarkTotal('benchmark1', 'laravel') ?>],
-            ['Orno\\Di', <?= $bm->getBenchmarkTotal('benchmark1', 'orno') ?>],
             ['League\\Di', <?= $bm->getBenchmarkTotal('benchmark1', 'league') ?>],
             ['Zend\\Di', <?= $bm->getBenchmarkTotal('benchmark1', 'zend') ?>],
-            ['PHP-DI', <?= $bm->getBenchmarkTotal('benchmark1', 'php-di') ?>]
+            ['PHP-DI', <?= $bm->getBenchmarkTotal('benchmark1', 'php-di') ?>],
+            ['Puice', <?= $bm->getBenchmarkTotal('benchmark1', 'puice') ?>]
         ]);
 
         var options = {};
