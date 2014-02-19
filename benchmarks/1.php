@@ -26,6 +26,21 @@ $bm = new Benchmark\Timer;
 ********************************************************************************/
 
 for ($i = 0; $i < 1000; $i++) {
+    $bm->start('benchmark1', 'manual');
+    $bart = new Benchmark\Stubs\Bart();
+    $bam = new Benchmark\Stubs\Bam($bart);
+    $baz = new Benchmark\Stubs\Baz($bam);
+    $bar = new Benchmark\Stubs\Bar($baz);
+    $foo = new Benchmark\Stubs\Foo($bar);
+    $bm->end('benchmark1', 'manual');
+    unset($bart);
+    unset($bam);
+    unset($baz);
+    unset($bar);
+    unset($foo);
+}
+
+for ($i = 0; $i < 1000; $i++) {
 
     // Illuminate\Container (Laravel)
     $illuminate = new Illuminate\Container\Container;
@@ -56,20 +71,26 @@ for ($i = 0; $i < 1000; $i++) {
 
 for ($i = 0; $i < 1000; $i++) {
     $bm->start('benchmark1', 'puice');
-//    Puice::configureApplication(function($config) {
-//        $factory = new Puice\Factory($config);
-//
-//        $config->set('BartInterface', 'defaultBart', $factory->create('Bart'));
-//        $config->set('Bam', 'defaultBam', $factory->create('Bam'));
-//        $config->set('BazInterface', 'defaultBaz', $factory->create('Baz'));
-//        $config->set('Bar', 'defaultBar', $factory->create('Bar'));
-//    });
-//
-//    $factory = Puice\Factory(new Puice());
+    $puice = new Puice();
+    $factory = new Puice\Factory($puice);
+
+    $puice->set('Benchmark\Stubs\BartInterface', 'defaultBart',
+        $factory->create('Benchmark\Stubs\Bart')
+    );
+    $puice->set('Benchmark\Stubs\Bam', 'defaultBam',
+        $factory->create('Benchmark\Stubs\Bam')
+    );
+    $puice->set('Benchmark\Stubs\BazInterface', 'defaultBaz',
+        $factory->create('Benchmark\Stubs\Baz')
+    );
+    $puice->set('Benchmark\Stubs\Bar', 'defaultBar',
+        $factory->create('Benchmark\Stubs\Bar')
+    );
+
     $bm->end('benchmark1', 'puice');
-//    unset($factory);
-//    Puice::reset();
-//    unset($foo);
+    unset($factory);
+    Puice::reset();
+    unset($foo);
 }
 
 for ($i = 0; $i < 1000; $i++) {
@@ -143,6 +164,7 @@ for ($i = 0; $i < 1000; $i++) {
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Component', 'Time Taken'],
+            ['Manual', <?= $bm->getBenchmarkTotal('benchmark1', 'manual') ?>],
             ['Illuminate\\Container', <?= $bm->getBenchmarkTotal('benchmark1', 'laravel') ?>],
             ['League\\Di', <?= $bm->getBenchmarkTotal('benchmark1', 'league') ?>],
             ['Zend\\Di', <?= $bm->getBenchmarkTotal('benchmark1', 'zend') ?>],
