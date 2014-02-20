@@ -18,6 +18,7 @@ unset($bam);
 unset($bart);
 
 $bm = new Benchmark\Timer;
+$iterations = 1000;
 
 /*******************************************************************************
  Benchmark 1: Auto resolution of object and dependencies.
@@ -25,7 +26,7 @@ $bm = new Benchmark\Timer;
  Excluded: Pimple, Symfony
 ********************************************************************************/
 
-for ($i = 0; $i < 1000; $i++) {
+for ($i = 0; $i < $iterations; $i++) {
     $bm->start('benchmark1', 'manual');
     $bart = new Benchmark\Stubs\Bart();
     $bam = new Benchmark\Stubs\Bam($bart);
@@ -40,7 +41,7 @@ for ($i = 0; $i < 1000; $i++) {
     unset($foo);
 }
 
-for ($i = 0; $i < 1000; $i++) {
+for ($i = 0; $i < $iterations; $i++) {
 
     // Illuminate\Container (Laravel)
     $illuminate = new Illuminate\Container\Container;
@@ -55,7 +56,7 @@ for ($i = 0; $i < 1000; $i++) {
 
 }
 /*
-for ($i = 0; $i < 1000; $i++) {
+for ($i = 0; $i < $iterations; $i++) {
 
     // Orno\Di
     $orno = (new Orno\Di\Container);
@@ -69,31 +70,28 @@ for ($i = 0; $i < 1000; $i++) {
 
 }*/
 
-for ($i = 0; $i < 1000; $i++) {
+for ($i = 0; $i < $iterations; $i++) {
     $bm->start('benchmark1', 'puice');
-    $puice = new Puice();
+    $puice = new Puice(
+        new Puice\Config\DefaultConfig(),
+        new Puice\Config\DefaultConfig()
+    );
     $factory = new Puice\Factory($puice);
 
     $puice->set('Benchmark\Stubs\BartInterface', 'defaultBart',
         $factory->create('Benchmark\Stubs\Bart')
     );
-    $puice->set('Benchmark\Stubs\Bam', 'defaultBam',
-        $factory->create('Benchmark\Stubs\Bam')
-    );
+
     $puice->set('Benchmark\Stubs\BazInterface', 'defaultBaz',
         $factory->create('Benchmark\Stubs\Baz')
-    );
-    $puice->set('Benchmark\Stubs\Bar', 'defaultBar',
-        $factory->create('Benchmark\Stubs\Bar')
     );
 
     $bm->end('benchmark1', 'puice');
     unset($factory);
-    Puice::reset();
     unset($foo);
 }
 
-for ($i = 0; $i < 1000; $i++) {
+for ($i = 0; $i < $iterations; $i++) {
 
     // League\Di
     $league = new League\Di\Container;
@@ -107,7 +105,7 @@ for ($i = 0; $i < 1000; $i++) {
 
 }
 
-for ($i = 0; $i < 1000; $i++) {
+for ($i = 0; $i < $iterations; $i++) {
 
     // Zend\Di
     $zend = new Zend\Di\Di;
@@ -121,7 +119,7 @@ for ($i = 0; $i < 1000; $i++) {
 
 }
 
-for ($i = 0; $i < 1000; $i++) {
+for ($i = 0; $i < $iterations; $i++) {
 
     // PHP-DI
     $phpdi = new DI\Container();
@@ -143,6 +141,7 @@ for ($i = 0; $i < 1000; $i++) {
     unset($foo);
 
 }
+
 
 ?>
 

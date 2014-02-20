@@ -10,7 +10,8 @@
         "symfony/dependency-injection": "2.2.*@dev",
         "aura/di": "dev-master",
         "mnapoli/php-di": "3.0.*",
-        "cansascityshuffle/puice": "0.1.0",
+        "cansascityshuffle/puice": "0.3.0",
+        "symfony/dependency-injection": "2.4",
         "league/di": "dev-master"
     },
     "minimum-stability": "dev",

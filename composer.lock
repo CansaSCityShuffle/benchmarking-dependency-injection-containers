@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "bca1e85bc32184d27aa1a676d2fdc664",
+    "hash": "909707b01555aaeaacebc7150710b735",
     "packages": [
         {
             "name": "aura/di",
@@ -111,16 +111,16 @@
         },
         {
             "name": "cansascityshuffle/puice",
-            "version": "0.1.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CansaSCityShuffle/Puice.git",
-                "reference": "20eff9ce541e076d1096d4ce3368837ee5843c8f"
+                "reference": "055226105f2c9c066d25063980ebfd84a88b3a08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CansaSCityShuffle/Puice/zipball/20eff9ce541e076d1096d4ce3368837ee5843c8f",
-                "reference": "20eff9ce541e076d1096d4ce3368837ee5843c8f",
+                "url": "https://api.github.com/repos/CansaSCityShuffle/Puice/zipball/055226105f2c9c066d25063980ebfd84a88b3a08",
+                "reference": "055226105f2c9c066d25063980ebfd84a88b3a08",
                 "shasum": ""
             },
             "require-dev": {
@@ -137,7 +137,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2014-02-18 06:18:48"
+            "time": "2014-02-20 10:16:28"
         },
         {
             "name": "doctrine/annotations",
@@ -609,34 +609,36 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "2.2.x-dev",
+            "version": "v2.4.0",
             "target-dir": "Symfony/Component/DependencyInjection",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DependencyInjection.git",
-                "reference": "0e726f0172a8cc36fcb28c2b4f1198292d825594"
+                "reference": "66c1eb29c6b6b0d3631d29c85c6d3f00f83f6a6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/0e726f0172a8cc36fcb28c2b4f1198292d825594",
-                "reference": "0e726f0172a8cc36fcb28c2b4f1198292d825594",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/66c1eb29c6b6b0d3631d29c85c6d3f00f83f6a6f",
+                "reference": "66c1eb29c6b6b0d3631d29c85c6d3f00f83f6a6f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "symfony/config": ">=2.2,<2.3-dev",
+                "symfony/config": "~2.2",
+                "symfony/expression-language": "~2.4",
                 "symfony/yaml": "~2.0"
             },
             "suggest": {
-                "symfony/config": "2.2.*",
-                "symfony/yaml": "2.2.*"
+                "symfony/config": "",
+                "symfony/proxy-manager-bridge": "Generate service proxies to lazy load them",
+                "symfony/yaml": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -662,7 +664,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "http://symfony.com",
-            "time": "2013-11-25 08:44:14"
+            "time": "2013-12-03 14:52:22"
         },
         {
             "name": "symfony/yaml",
@@ -899,7 +901,6 @@
     "stability-flags": {
         "orno/di": 20,
         "zendframework/zend-di": 20,
-        "symfony/dependency-injection": 20,
         "aura/di": 20,
         "league/di": 20
     },
