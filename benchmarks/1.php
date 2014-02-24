@@ -86,6 +86,8 @@ for ($i = 0; $i < $iterations; $i++) {
         'Benchmark\Stubs\Baz'
     );
 
+    $foo = $puice->create('Benchmark\Stubs\Foo');
+
     $bm->end('benchmark1', 'puice');
     unset($factory);
     unset($foo);
