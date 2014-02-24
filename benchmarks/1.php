@@ -79,11 +79,11 @@ for ($i = 0; $i < $iterations; $i++) {
     $factory = new Puice\Factory($puice);
 
     $puice->set('Benchmark\Stubs\BartInterface', 'defaultBart',
-        $factory->create('Benchmark\Stubs\Bart')
+        'Benchmark\Stubs\Bart'
     );
 
     $puice->set('Benchmark\Stubs\BazInterface', 'defaultBaz',
-        $factory->create('Benchmark\Stubs\Baz')
+        'Benchmark\Stubs\Baz'
     );
 
     $bm->end('benchmark1', 'puice');
